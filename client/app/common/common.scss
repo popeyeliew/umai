@@ -1,13 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:300,400);
 
-$primaryColor:   #0277bd;
-$accentColor:    #1de9b6;
-$bgColor:        #efefef;
-$darkBgColor:    #263238;
-$lightBgColor:   #37474f;
-$lightTextColor: #f5f5f5;
-$darkTextColor:  #212121;
-
 $black-color: #091d1f;
 $dark-grey-color: #3d3d3d;
 $brown-color: #a6724b;
@@ -20,7 +12,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+.mt0 {
+  margin-top: 0;
+}
+
 .md-button {
+  margin: 0;
   text-transform: initial;
 }
 
@@ -44,6 +41,10 @@ md-select {
   border-style: solid;
   border-radius: 50%;
   display: inline-block;
+}
+
+.main-content {
+  padding: 15px;
 }
 
 html, body, .app {

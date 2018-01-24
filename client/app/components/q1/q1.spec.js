@@ -20,17 +20,36 @@ describe('Q1', () => {
 
   describe('Controller', () => {
     // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('calculate() calculates simple interest correctly', () => {
       let controller = makeController();
-      expect(controller).to.have.property('name');
-    });
-  });
 
-  describe('Template', () => {
-    // template specs
-    // tip: use regex to ensure correct bindings are used e.g., {{  }}
-    it('has name in template [REMOVE]', () => {
-      expect(Q1Template).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      controller.calculate();
+      expect(controller.grandResult.interest).to.equal('5.20');
+      expect(controller.grandResult.amount).to.equal('105.20');
+
+      controller.principal = 1800.50;
+      controller.interestRate = 12;
+      controller.years = 7;
+      controller.calculate();
+      expect(controller.grandResult.interest).to.equal('1512.42');
+      expect(controller.grandResult.amount).to.equal('3312.92');
+    });
+
+    it('calculate() calculates compound interest correctly', () => {
+      let controller = makeController();
+
+      controller.calculationType = 'compound';
+      controller.calculate();
+      expect(controller.grandResult.interest).to.equal('5.32');
+      expect(controller.grandResult.amount).to.equal('105.32');
+
+      controller.principal = 1800.50;
+      controller.interestRate = 12;
+      controller.years = 7;
+      controller.frequency = 4;
+      controller.calculate();
+      expect(controller.grandResult.interest).to.equal('2318.91');
+      expect(controller.grandResult.amount).to.equal('4119.41');
     });
   });
 

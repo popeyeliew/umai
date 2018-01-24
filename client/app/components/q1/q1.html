@@ -1,3 +1,76 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
+ <div class="main-content" layout="row">
+  <div flex-gt-xs="50" flex-offset-gt-xs="25">
+    <h2>Calculate Compound Interest</h2>
+
+    <hr>
+
+    <p><b>P/S: Validations and checkings are not implemented. Ran out of time and delayed for too long, sorry!</b></p>
+    <p><b>These are coded by 'assuming' all inputs are valid, no funny random strings, etc.</b></p>
+    <p><b>Formulas taken from:</b></p>
+    <div>- <a href="https://nandakumar.co.in/ncn/post/5" target="blank">https://nandakumar.co.in/ncn/post/5</a></div>
+    <div>- <a href="https://nandakumar.co.in/ncn/post/83" target="blank">https://nandakumar.co.in/ncn/post/83</a></div>
+
+    <div id="inputs">
+      <div class="form-group" layout="row">
+        <label flex="40">Calculation Type</label>
+        <div flex="60">
+          <input type="radio" ng-model="$ctrl.calculationType" value="simple" /> Simple
+          <input type="radio" ng-model="$ctrl.calculationType" value="compound" /> Compound
+        </div>
+      </div>
+
+      <div class="form-group" layout="row">
+        <label flex="40">Principal</label>
+        <input flex="60" type="text" ng-model="$ctrl.principal" />
+      </div>
+
+      <div class="form-group" layout="row">
+        <label flex="40">Rate of Interest (%)</label>
+        <input flex="60" type="number" ng-model="$ctrl.interestRate" />
+      </div>
+
+      <div class="form-group" layout="row">
+        <label flex="40">Time Period (year)</label>
+        <input flex="60" type="number" ng-model="$ctrl.years" />
+      </div>
+
+      <div class="form-group" layout="row" ng-if="$ctrl.calculationType === 'compound'">
+        <label flex="40">Compunding Times Per Year</label>
+        <input flex="60" type="number" ng-model="$ctrl.frequency" />
+      </div>
+
+      <div class="form-group" layout="row">
+        <div flex="60" flex-offset="40">
+          <md-button class="md-raised md-primary" ng-click="$ctrl.calculate()">Calculate</md-button>
+        </div>
+      </div>
+    </div>
+
+    <div id="results" ng-if="$ctrl.showResults">
+      <h3>Results</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Interest</th>
+            <th>Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in $ctrl.yearlyResult">
+            <td>{{ result.year }}</td>
+            <td>{{ result.interest }}</td>
+            <td>{{ result.amount }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Grand Total</td>
+            <td>{{ $ctrl.grandResult.interest }}</td>
+            <td>{{ $ctrl.grandResult.amount }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
 </div>
