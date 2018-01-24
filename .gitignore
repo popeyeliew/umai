@@ -4,5 +4,5 @@
 node_modules
 .settings
 *.log
-dist
+dist/
 __docs
