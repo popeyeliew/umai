@@ -1,0 +1,73 @@
+<div class="step active">
+  <div class="title-bar" layout="row" layout-align="start center">
+      <div flex="none">
+        <rounded-number data-color="white" data-number="1"></rounded-number>
+      </div>
+      <h2 class="title" flex>Select a time</h2>
+  </div><!-- ./title-bar -->
+
+  <div class="content-body">
+    <h1 class="restaurant-name">Tippling Club</h1>
+    <img class="banner" src="/assets/img/banner-tippling.png" alt="Tippling Club" />
+
+    <div class="filters" layout="row" layout-wrap>
+      <md-select flex-xs="100" flex-order-xs="3" flex-gt-xs="33" ng-model="$ctrl.filteredDate" placeholder="Select Date">
+        <md-option ng-repeat="date in $ctrl.dateSelections track by $index" ng-value="date">{{ $ctrl.getDayName(date.date) }}, {{ date.date | date: 'd/M/yyyy' }}</md-option>
+      </md-select>
+      <md-select flex-xs="50" flex-gt-xs="33" ng-model="$ctrl.filteredPartyCount" placeholder="Select Party Count">
+        <md-option ng-repeat="count in $ctrl.partyCountFilter track by $index" ng-value="count">Party of {{ count }}</md-option>
+      </md-select>
+      <md-select flex-xs="50" flex-gt-xs="33" ng-model="$ctrl.filteredTime" placeholder="Select Time">
+        <md-option ng-repeat="time in $ctrl.timeFilter track by $index" ng-value="time">{{ time }}</md-option>
+      </md-select>
+    </div><!-- ./filters -->
+
+    <div class="date-selections" layout="row" hide-xs>
+      <div class="date" flex="10" ng-repeat="date in $ctrl.dateSelections track by $index">
+        <div class="day">{{ $ctrl.getDayName(date.date) }}</div>
+        <rounded-number
+          data-number="date.date | date: 'd'"
+          data-filled="{{ date.filled }}"
+          data-disabled="{{ date.disabled }}"
+          data-unavailable="{{ date.unavailable }}"
+          data-size="small"></rounded-number>
+      </div>
+
+      <div class="date add" flex="10">
+        <div class="day">&nbsp;</div>
+        <rounded-number
+          data-number="'+'"
+          data-size="small"></rounded-number>
+      </div>
+    </div><!-- ./dates -->
+
+    <div class="sessions" ng-repeat="session in $ctrl.sessions track by $index">
+      <h3 class="session">{{ session.type }}</h3>
+
+      <div class="timeslots" layout="row" layout-wrap>
+        <timeslot
+        flex-xs="50"
+        flex-gt-xs="33"
+        ng-repeat="timeslot in session.timeslots track by $index"
+        data-timeslot="timeslot"></timeslot>
+
+        <div
+          class="notify"
+          flex-xs="50"
+          flex-gt-xs="33">
+          <img class="icon" src="/assets/img/icon-bell.png" alt="Notify Me" />
+          <span class="text">Notify Me</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- ./content-body -->
+</div><!-- ./step -->
+
+<div class="step">
+  <div class="title-bar" layout="row" layout-align="start center">
+      <div flex="none">
+        <rounded-number data-color="light-grey" data-number="2"></rounded-number>        
+      </div>
+      <h2 class="title" flex>Details</h2>
+  </div><!-- ./title-bar -->
+</div><!-- ./step -->

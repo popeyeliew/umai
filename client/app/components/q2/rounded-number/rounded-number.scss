@@ -1,0 +1,51 @@
+@import '../../../common/common';
+
+rounded-number {
+  .container {
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+    line-height: 34px;
+    text-align: center;
+    color: $brown-color;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: $brown-color;
+    display: inline-block;
+  }
+
+  &[data-size="small"] .container {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  &[data-color="white"] .container {
+    color: white;
+    border-color: white;
+  }
+
+  &[data-color="light-grey"] .container {
+    color: $light-grey-color;
+    border-color: $light-grey-color;
+  }
+
+  &[data-disabled="true"] .container {
+    color: transparentize($grey-color, 0.7);
+    border-color: transparent;
+    background-color: transparentize($grey-color, 0.9);
+  }
+
+  &[data-unavailable="true"] .container {
+    color: transparentize($grey-color, 0.7);
+    border-color: transparent;
+    background-color: $light-red-color;
+  }
+
+  &[data-filled="true"] .container {
+    color: white;
+    background-color: $brown-color;
+  }
+}

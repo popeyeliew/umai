@@ -1,0 +1,10 @@
+<div
+  class="container"
+  ng-class="{ 'disabled': !$ctrl.timeslot.availability, 'selected': $ctrl.timeslot.selected }"
+  ng-click="$ctrl.toggleTimeslot($ctrl.timeslot)"
+  layout-xs="column"
+  layout-gt-xs="row"
+  layout-align-xs="start center">
+  <div class="time" flex-gt-xs="40">{{ $ctrl.timeslot.time }}</div>
+  <div class="venue" flex-gt-xs="auto">{{ $ctrl.timeslot.venue }}</div>
+</div>

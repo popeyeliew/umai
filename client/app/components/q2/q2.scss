@@ -1,0 +1,149 @@
+@import '../../common/common';
+
+.title-bar {
+  padding: 12px 20px;
+  color: $light-grey-color;
+  background-color: white;
+
+  .step.active & {
+    color: white;
+    background-color: $black-color;
+  }
+
+  rounded-number {
+    margin-right: 15px;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.content-body {
+  padding: 15px 20px 20px;
+  background-color: $light-grey-color;
+
+  .restaurant-name {
+    margin: 0 0 13px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 18px;
+
+    @media screen and (min-width: 600px) {
+      font-size: 30px;
+      line-height: 30px;
+    }
+  }
+
+  .banner {
+    width: 100%;
+  }
+
+  .filters {
+    margin: 20px 0;
+
+    md-select {
+      &:nth-of-type(3) {
+        border-left: 1px solid transparentize($grey-color, 0.8);
+      }
+
+      @media screen and (max-width: 599px) {
+        &:first-child {
+          text-align: center;
+        }
+      }
+
+      @media screen and (min-width: 600px) {
+        &:not(:first-child) {
+          border-left: 1px solid transparentize($grey-color, 0.8);
+        }
+      }
+    }
+  }
+
+  .date-selections {
+    .date {
+      text-align: center;
+
+      &.add rounded-number {
+        border-left: 1px solid transparentize($grey-color, 0.8);
+        display: block;
+        
+        .container div {
+          font-size: 30px;
+          font-weight: 100;
+        }
+      }
+    }
+
+    .day {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: $grey-color;
+    }
+
+    rounded-number:not([data-unavailable="true"]):not([data-disabled="true"]) {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .sessions {
+    .session {
+      font-size: 15px;
+      color: $grey-color;
+
+      @media screen and (min-width: 600px) {
+        margin: 20px 0;
+      }
+    }
+
+    @media screen and (max-width: 599px) {
+      &:not(:first-of-type) .session {
+        margin-top: 50px;
+      }
+    }
+
+    .timeslots {
+      margin: -6px;
+    }
+
+    timeslot,
+    .notify {
+      max-width: calc(50% - 12px); // dirty gap fix
+      margin: 6px;
+
+      @media screen and (min-width: 600px) {
+        max-width: calc(33.33% - 12px); // dirty gap fix
+      }
+    }
+
+    .notify {
+      text-align: center;
+      line-height: 46px;
+      border: 1px solid $black-color;
+      border-radius: 4px;
+      cursor: pointer;
+      transform: .15s;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      .icon {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      .text {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+}
